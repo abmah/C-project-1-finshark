@@ -1,0 +1,59 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]ssets/
+
+# Visual Studio
+.vscode/
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# NuGet Packages
+**/packages/*
+!.nuget/packages
+
+# Logs
+*.log
+
+# Temporary Files
+*.tmp
+*.temp
+*.pid
+*.seed
+*.sublime-project
+*.sublime-workspace
+
+# Entity Framework Core
+/Migrations/
+
+# Build directories
+/bin/
+/obj/
+
+# DotNet Core
+project.lock.json
+project.fragment.lock.json
+
+# Azure Web Apps
+*.Publish.xml
+*.pdb
+
+# Visual Studio Code - Folders
+.vscode/
+
+# Ignore all files in the following folders
+**/bin/
+**/obj/
+
+# Visual Studio Code - workspace settings
+.vscode/settings.json
