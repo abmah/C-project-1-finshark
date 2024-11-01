@@ -2,6 +2,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using api.Models;
 using api.Data;
+using api.Interfaces;
+using api.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,14 +20,10 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 }
 );
 
-
-
+builder.Services.AddScoped<IStockRepository, StockRepository>();
 
 
 var app = builder.Build();
-
-
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
