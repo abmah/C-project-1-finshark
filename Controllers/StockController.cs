@@ -40,7 +40,7 @@ namespace api.Controllers
 
             var stocks = await _stockRepo.GetAllAsync(query);
 
-            var stockDto = stocks.Select(x => x.ToStockDto());
+            var stockDto = stocks.Select(x => x.ToStockDto()).ToList();
 
             return Ok(stockDto);
         }

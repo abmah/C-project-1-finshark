@@ -30,7 +30,8 @@ namespace api.Repository
         {
             var commentModel = await _context.Comments.FirstOrDefaultAsync(x => x.Id == id);
 
-            if (commentModel == null){
+            if (commentModel == null)
+            {
                 return null;
             }
             _context.Comments.Remove(commentModel);
@@ -41,7 +42,7 @@ namespace api.Repository
 
         public async Task<List<Comment>> GetAllAsync()
         {
-            var comments = await _context.Comments.ToListAsync();
+            var comments = await _context.Comments.Include(a => a.AppUser).ToListAsync();
 
             return comments;
         }
@@ -49,22 +50,23 @@ namespace api.Repository
         public async Task<Comment?> GetByIdAsync(int id)
         {
 
-            var comment = await _context.Comments.FirstOrDefaultAsync(x => x.Id == id);
+            var comment = await _context.Comments.Include(a => a.AppUser).FirstOrDefaultAsync(x => x.Id == id);
             return comment;
-            
+
         }
 
         public async Task<Comment?> UpdateAsync(int id, Comment commentModel)
         {
             var existingComment = await _context.Comments.FirstOrDefaultAsync(x => x.Id == id);
 
-            if (existingComment == null){
+            if (existingComment == null)
+            {
                 return null;
             }
 
             existingComment.Title = commentModel.Title;
             existingComment.Content = commentModel.Content;
-            
+
             await _context.SaveChangesAsync();
             return existingComment;
         }
